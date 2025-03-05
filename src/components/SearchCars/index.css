@@ -1,0 +1,55 @@
+.SearchCar{
+background-color: #ded9d9;
+height: 50vh;
+width:100%;
+padding: 50px;
+}
+.car-list{
+    margin: 40px;
+}
+.item-holder{
+    background-color: coral;
+    padding: 15px;
+}
+.SearchCar h1{
+    color: green;
+    font-family: fangsong;
+        margin: 0px 0px 0px 20px;
+}
+.txts{
+width: 100%;
+}
+.form-car{
+    display: flex;
+    padding: 15px;
+
+}
+.txt{
+    margin-bottom: 30px;
+}
+.form-car input{
+    padding: 10px;
+    margin: 10px;
+}
+button{
+    width: 200px;
+    /* outline: none; */
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+.check{
+    margin: -14px 0px 0px 25px;
+}
+.content{
+    padding: 15px;
+}
+.main-hodler{
+    width: 100%;
+}
+.Car Image {
+    width: 300px;
+}
+.Car Image img{
+    width: 100%;
+}

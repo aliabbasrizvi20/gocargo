@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.App img{
+  width: 800px;
+  border-radius: 50px;
+}
+.App Button{
+  width: 800px;
+  color: black;
+  padding: 10px;
+  border:none;
+  background-color: rgb(32, 190, 188);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.photo{
+  
+  width: 800px;
+  height: 400px;
+}
