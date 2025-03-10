@@ -29,10 +29,11 @@ function ViewCar() {
         return (
             <Cardata
                 Banner={car.images[0]}
-                Img1={car.images[1]}
-                Img2={car.images[1]}
-                Img3={car.images[1]}
-                Img4={car.images[1]}
+                Images={car.images}
+                // Img1={car.images[1]}
+                // Img2={car.images[1]}
+                // Img3={car.images[1]}
+                // Img4={car.images[1]}
                 Host={car.host.name}
                 Detail={car.name}
                 Des={car.description} />

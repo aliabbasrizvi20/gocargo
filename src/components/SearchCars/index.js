@@ -27,7 +27,10 @@ export default function SearchCars() {
     const onLastDateChange=(e)=>{
         setLastDate(e.target.value);
     }
-   
+    
+    function onClick(){
+        navigate("/list");
+    }
     
         return (
         <>
@@ -50,8 +53,11 @@ export default function SearchCars() {
 
         </div><div className="car-list">
         <CarList/>
+        <div className="btn-btn">
+        <button onClick={onClick}>Browse All Cars</button>
         </div>
-       
+        </div>
+      
         </>
     );
 

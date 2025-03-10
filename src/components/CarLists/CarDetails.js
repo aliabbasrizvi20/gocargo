@@ -1,6 +1,5 @@
 import { Navigate, useNavigate } from "react-router";
 import "./index.css"
-import { useState } from "react";
 export default function CarDetails({ Image, Name, Price, Description, id }) {  
 const navigate=useNavigate();
     function onClick(){

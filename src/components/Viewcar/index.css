@@ -1,6 +1,29 @@
+
 .Img-holder{
     display: flex;
 }
 .more-img{
     display: flex;
+}
+.image-container{
+    width: 100%;
+    display: flex;
+}
+.banner-image{
+    height: 100%;
+    width: 50%;
+}
+.side-images{
+    width: 50%;
+
+}
+.more-img{
+    width: 100%;
+}
+.banner-image img{
+    width: 100%;
+}
+.more-img img{
+    width: 50%;
+    height: 50%;
 }

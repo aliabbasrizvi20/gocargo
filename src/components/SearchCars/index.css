@@ -53,3 +53,12 @@ button{
 .Car Image img{
     width: 100%;
 }
+.btn-btn{
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+   
+}
+.btn-btn button{
+    padding: 15px;
+}
