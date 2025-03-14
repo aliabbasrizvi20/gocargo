@@ -14,8 +14,6 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<SearchCars />} />
-                    
-
                     <Route path="/list" element={<CarList />} />
                     <Route path="/car/:id" element={<ViewCar />} />
                     <Route path="/login" element={<Login />} />
