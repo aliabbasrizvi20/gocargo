@@ -10,20 +10,20 @@ import Signup from "./components/SignUp/Signup";
 
 export default function App() {
     return (
-        <CarLayout>
-            <BrowserRouter>
+        <BrowserRouter>
+            <CarLayout>
                 <Routes>
                     <Route path="/" element={<SearchCars />} />
                     <Route path="/list" element={<CarList />} />
                     <Route path="/car/:id" element={<ViewCar />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
-                    
-                    
+
+
                 </Routes>
-            </BrowserRouter>
-            
-        </CarLayout>
+
+            </CarLayout>
+        </BrowserRouter>
 
     );
 }

@@ -28,6 +28,7 @@ function ViewCar() {
     if(car && car.images){
         return (
             <Cardata
+                car={car}
                 Banner={car.images[0]}
                 Images={car.images}
                 // Img1={car.images[1]}

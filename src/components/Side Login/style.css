@@ -24,3 +24,12 @@ button{
 #Offer-price{
     font-weight: 700;
 }
+.rating-box{
+    background-color: forestgreen;
+    padding: 15px;
+    color: white;
+    font-size: 22px;
+    border-radius: 21px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}

@@ -31,9 +31,12 @@ function CarList() {
                         Price={item.price.selling_price}
                         Description={item.description}
                         id={item._id}
+                       
                     />
+                    
                 })}
             </div>
+            
         </div>
     );
 }
