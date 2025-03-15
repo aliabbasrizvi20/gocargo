@@ -8,8 +8,11 @@ import { Navigate, useNavigate } from "react-router";
 import axios from "axios";
 import Popup from "../Popup";
 import { API } from "../../helpers/requests";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../store/auth/authAction";
 export default function Login() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // const [login, setLogin]=useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -37,22 +40,23 @@ export default function Login() {
             setShowPopup(true);
             return;
         }
-        API.post("/auth/login", {
-            email: email,
-            password: password,
-        })
-            .then((response) => {
-                setSuccessPopup(true);
-                // console.log(response);
-                // setPopupHeading("Success")
-                // setPopupSubHeading("Your Account Is Created")
-                // setShowPopup(false);
-                // setSuccessPopup(true);
-                // console.log(successPopup);
-                // console.log(`Welcome Back ${email}`)
-                // navigate("/");
+        dispatch(loginUser({ email, password }));
+        // API.post("/auth/login", {
+        //     email: email,
+        //     password: password,
+        // })
+        //     .then((response) => {
+        //         setSuccessPopup(true);
+        //         // console.log(response);
+        //         // setPopupHeading("Success")
+        //         // setPopupSubHeading("Your Account Is Created")
+        //         // setShowPopup(false);
+        //         // setSuccessPopup(true);
+        //         // console.log(successPopup);
+        //         // console.log(`Welcome Back ${email}`)
+        //         // navigate("/");
 
-            })
+        //     })
     }
     const isFormValid = email !== "" && password !== "";
 

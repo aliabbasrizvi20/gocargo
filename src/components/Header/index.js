@@ -1,8 +1,10 @@
 import "./Header.css";
 import car from "../../assets/car.svg";
-import Login from "../../components/Login/Login";
+import { useSelector } from "react-redux";
+import { selectIsAuthenticated } from "../../store/auth/authSelector";
 
 function Header() {
+    const isAuthenticated = useSelector(selectIsAuthenticated);
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -25,7 +27,7 @@ function Header() {
                     {/* Right-aligned Login link */}
                     <ul className="navbar-nav ms-auto fs-5 ">
                         <li className="nav-item ">
-                            <a className="nav-link text-success border border-success rounded-start" href="http://localhost:3000/login">LogIn</a>
+                            <a className="nav-link text-success border border-success rounded-start" href="http://localhost:3000/login">Login</a>
                         </li>
                     </ul>
                 </div>
