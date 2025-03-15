@@ -24,7 +24,14 @@ export const loginUser = (userData) => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => (dispatch) => {
-  axios.post("https://www.gocargo.com/logout", {}, { withCredentials: true });
-  dispatch(logout());
+export const logoutUser = () => async (dispatch) => {
+    try {
+        const response = await API.get(PATH.LOGOUT);
+        if(response.status === 200){
+            dispatch(logout());
+        }
+    }
+    catch (error) {
+        console.error("Logout failed:", error);
+    }
 };

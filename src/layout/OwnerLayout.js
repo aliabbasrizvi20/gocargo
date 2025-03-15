@@ -1,7 +1,7 @@
 import { Outlet } from "react-router";
 import Header from "../components/Header";
 
-function CarLayout({ children }) {
+function OwnerLayout({ children }) {
     return (
         <>
             <Header />
@@ -10,4 +10,4 @@ function CarLayout({ children }) {
         </>
     )
 };
-export default CarLayout;
+export default OwnerLayout;
