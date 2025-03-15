@@ -1,14 +1,21 @@
 import "./Header.css";
 import car from "../../assets/car.svg";
 import Login from "../../components/Login/Login";
+import { Link, useNavigate } from "react-router";
+import Button from "../Button";
 
 function Header() {
+    const navigate=useNavigate();
+    function onClick(){
+        navigate("/login");
+    }
     return (
+        
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
                 {/* Logo */}
                 <a className="navbar-brand" href="#">
-                    <img src={car} className="site-icon" alt="Site Icon" />
+                   <Link to=""> <img src={car} className="site-icon" alt="Site Icon" /></Link>
                 </a>
                 {/* Toggler for smaller screens */}
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +32,10 @@ function Header() {
                     {/* Right-aligned Login link */}
                     <ul className="navbar-nav ms-auto fs-5 ">
                         <li className="nav-item ">
-                            <a className="nav-link text-success border border-success rounded-start" href="http://localhost:3000/login">LogIn</a>
+                            
+                            {/* <Button onClick={onClick}>LogIn</Button> */}
+                            
+                            <Link to="/login" className="nav-link text-success border border-success rounded-start">LogIn</Link>
                         </li>
                     </ul>
                 </div>

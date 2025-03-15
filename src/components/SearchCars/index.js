@@ -1,8 +1,12 @@
 import { Navigate, useNavigate } from "react-router";
 import Button from "../Button";
-import "./index.css"
+import "./index.css";
+import ni from"../../assets/ni.jpg";
+import blackcar from "../../assets/blackcar.jpeg";
 import CarList from "../CarLists/carList";
 import { useEffect, useState } from "react";
+import Footer from "../Footer";
+import CarSection from "../Carsection";
 export default function SearchCars() {
     const navigate = useNavigate();
     const[location, setLocation]= useState("");
@@ -36,28 +40,40 @@ export default function SearchCars() {
         <>
 
         <div className="SearchCar">
+            <div className="content">
             <div className="heading">
-            <h1>Search for cars in bangalore</h1></div>
+            <h1>Search for cars in  <span className="highlight-city">bangalore</span></h1></div>
            <div className="botton-container">
             <div className="form-car">
             <input type="text " className="txts" placeholder="Location" onChange={onLocationChange}></input>
-            <input type="date" placeholder="" onChange={onStartDateChange}></input>
-            <input type="date" placeholder="" onChange={onLastDateChange}></input>
-            <Button onClick={onSearchClick}className="searchtbtn">Search Cars</Button>
+           <div className="trip-start">
+           <input type="date" placeholder="" onChange={onStartDateChange}></input>
+           </div>
+           <div className="trip-ends">
+           <input type="date" placeholder="" onChange={onLastDateChange}></input>
+           </div>
+           <div className="searchcar-btn">
+           <Button onClick={onSearchClick}className="searchtbtn">Search Cars</Button>
+           </div>
             
             
             </div><div className="check">
-            <input type="checkbox"></input><span>   Delivery & Pick-up, from anywhere</span>
+            <input type="checkbox"></input><span> Delivery & Pick-up, from anywhere</span>
             </div>
-            </div>
+            </div></div>
 
         </div><div className="car-list">
-        <CarList/>
+    
+        <CarList
+    
+        />
         <div className="btn-btn">
         <button onClick={onClick}>Browse All Cars</button>
         </div>
         </div>
       
+      
+      <Footer/>
         </>
     );
 

@@ -30,24 +30,36 @@ export default function Signup() {
     const onPasswordChange=(e)=>{
         setPass(e.target.value);
     }
-    function onClick(){
+    const onClick=(e)=>{
+        if (email === "" || pass === "") {
+            //    setPopupHeading("Sorry")
+            //    setPopupSubHeading("Please Enter A Valid Email");
+            setShowPopup(true);
+            return;}
+
         API.post("/users/save",{
             name: name,
             email: email,
             password: pass,
-            profile_pic: null
+            profile_pic: null,
+            
+           
     
         })
         .then((response)=>{
             console.log(response);
+            setSuccessPopup(true);
             
-            navigate("/login")
+            //  navigate("/login")
+        })
+        .catch((error)=>{
+                console.error("error",error);
         })
         
         // console.log(name);
         // console.log(email);
         // console.log(pass);
-    }
+    };
     
     return (
         <div className="holder">
@@ -87,7 +99,7 @@ export default function Signup() {
                         image={check}
                         heading="Success"
                         subHeading="You Have Successfully Created Your Account"
-                        buttonText="OK"
+                        buttonText="LogIn To Continue"
                         className="green-btn"
                         onClose={() => setSuccessPopup(false)}
                     />
@@ -108,4 +120,4 @@ export default function Signup() {
             </div>
         </div>
     );
-}
+    }

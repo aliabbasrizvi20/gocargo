@@ -3,6 +3,7 @@ import cross from "../../assets/cross.png"
 import check from "../../assets/check.png"
 import Button from "../Button";
 import "./index.css"
+import { Link } from "react-router";
 import InputField from "../InputField";
 import { Navigate, useNavigate } from "react-router";
 import axios from "axios";
@@ -41,8 +42,21 @@ export default function Login() {
             email: email,
             password: password,
         })
-            .then((response) => {
-                setSuccessPopup(true);
+          .then((response) => {
+            console.log(response)
+            // setSuccessPopup(true);
+            navigate("/")
+    if (response.response.status === 400) {
+        console.log("error");
+        
+    }
+   
+}).catch(()=>{
+    setShowPopup(true);
+
+})
+
+                // setSuccessPopup(true);
                 // console.log(response);
                 // setPopupHeading("Success")
                 // setPopupSubHeading("Your Account Is Created")
@@ -52,7 +66,7 @@ export default function Login() {
                 // console.log(`Welcome Back ${email}`)
                 // navigate("/");
 
-            })
+    
     }
     const isFormValid = email !== "" && password !== "";
 
@@ -113,7 +127,9 @@ export default function Login() {
 
                 </div>
                 <div className="sign">
-                    <p>New To GoCarGo?</p><a href="http://localhost:3000/signup"><h6>SignUP</h6></a></div>
+                     {/* <p>New To GoCarGo?</p><a href="http://localhost:3000/signup"><h6>SignUP</h6></a> </div> */}
+                     
+                     <p>New To Gocargo?</p><Link to="/signup">SignUP</Link> </div>
             </div>
         </div>
     );
