@@ -6,10 +6,11 @@ import ViewCar from "./components/Viewcar/ViewCar";
 import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/Signup";
 import { useDispatch } from "react-redux";
-import { use, useEffect } from "react";
+import { useEffect } from "react";
 import { session } from "./store/auth/authAction";
 import OwnerLayout from "./layout/OwnerLayout";
 import AddCar from "./pages/owner/AddCar";
+import OrderSuccess from "./pages/rent/OrderSuccess";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="car/:id" element={<ViewCar />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="order-success" element={<OrderSuccess />} />
         </Route>
 
         {/* Owner Routes */}
