@@ -1,13 +1,13 @@
-import axios from 'axios';
 import Cardata from './Cardata'
-import CarDetails from '../CarLists/CarDetails';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { API } from '../../helpers/requests';
+import { PATH } from '../../helpers/constants';
 function ViewCar() {
     const [car, setCar] = useState({});
     let params = useParams();
     useEffect(() => {
-        axios.get('https://gocargo-1.onrender.com/cars/' + params.id).then((res) => {
+        API.get(PATH.CARS +"/"+ params.id).then((res) => {
             setCar(res.data)
             console.log(res.data)
         }

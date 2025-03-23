@@ -3,4 +3,5 @@ export const PATH = {
     SESSION: "/auth/session",
     LOGOUT: "/auth/logout",
     CREATE_ORDER: "/create-order",
+    CARS: "/cars",
 };
