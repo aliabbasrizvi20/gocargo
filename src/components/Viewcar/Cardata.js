@@ -1,16 +1,25 @@
 import "./index.css"
 import Logintocheckout from "../Side Login/Logincart";
 import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import Button from "../Button";
+import BackButton from "../BackButton/BackButton";
 export default function CarData({ Banner, Images, Host, Detail, Des,Price,car }) {
-    console.log(Images);
 
+    console.log(Images);
+const navigate=useNavigate();
 
     return (
 
         <div className="container">
 
             <div className="side-content-holder">
-                <div className="little"><Link to="/"> &lt; Back</Link></div>
+                <div className="little">
+                    <BackButton
+                    
+                    />
+                    {/* <Button onClick={()=>navigate(-1)}>&lt;Back</Button> */}
+                </div>
                 <div className="image-container">
 
                     <div className="banner-image">
@@ -21,7 +30,7 @@ export default function CarData({ Banner, Images, Host, Detail, Des,Price,car })
                         {/* <div className="more-img"> */}
                         {
                             // Images.map( url => <img src={url} />)
-                            Images.map(function (url) {
+                            Images.slice(0,4).map(function (url) {
                                 return <img src={url} />
                             })
                         }

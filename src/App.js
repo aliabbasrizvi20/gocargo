@@ -12,6 +12,7 @@ import OwnerLayout from "./layout/OwnerLayout";
 import AddCar from "./pages/owner/AddCar";
 import OrderSuccess from "./pages/rent/OrderSuccess";
 
+
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,14 +25,13 @@ export default function App() {
       <Routes>
         {/* Car Rental Routes */}
         <Route path="/" element={<CarLayout />}>
-          <Route index element={<SearchCars />} />  
-          <Route path="list" element={<CarList />} /> 
+          <Route index element={<SearchCars />} />
+          <Route path="list" element={<CarList />} />
           <Route path="car/:id" element={<ViewCar />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="order-success" element={<OrderSuccess />} />
         </Route>
-
         {/* Owner Routes */}
         <Route path="/owner" element={<OwnerLayout />}>
           <Route index element={<AddCar />} />

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuthenticated, selectUser } from "../../store/auth/authSelector";
 import { logoutUser } from "../../store/auth/authAction";
+import  Button from "../Button";
 
 function Header() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -44,9 +45,12 @@ function Header() {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              {/* <a className="nav-link" href="#">
                 Become a Host
-              </a>
+              </a> */}
+              <Link to="/owner" className="text-muted text-decoration-none">
+                Become a host
+              </Link>
             </li>
           </ul>
 
@@ -56,12 +60,15 @@ function Header() {
               {/* <Button onClick={onClick}>LogIn</Button> */}
 
               {!isAuthenticated && (
-                <Link
+                <Button>
+                <Link      
+                //  background-color: #117A41; color: white; border: none;
                   to="/login"
-                  className="nav-link text-success border border-success rounded-start"
+                  className="nav-link text-success border border-success rounded-start text-white b-none " 
                 >
                   LogIn
                 </Link>
+                </Button>
               )}
               {isAuthenticated && (
                 <div className="d-flex-inline">

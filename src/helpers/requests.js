@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000';
-// const BASE_URL = 'https://gocargo-1.onrender.com';
+//const BASE_URL = 'http://localhost:5000';
+ const BASE_URL = 'https://gocargo-1.onrender.com';
+//  const BASE_URL = 'https://7e3c-182-69-177-63.ngrok-free.app';
+ 
 const INSTANCE = axios.create({
     baseURL: BASE_URL,
     headers: {'Content-Type': 'application/json'},

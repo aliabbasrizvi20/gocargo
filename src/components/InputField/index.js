@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./InputField.css"
 import LoginPopup from "../Popup";
-function InputField({ type, placeholder, disabled, onChange, error, pattern,  }) {
+function InputField({ type, placeholder, disabled, onChange, error, pattern,className, onClick  }) {
     const [internalError, setInternalError] = useState("");
 // const  onInputChange = (e) => {
     
@@ -23,7 +23,7 @@ function InputField({ type, placeholder, disabled, onChange, error, pattern,  })
 
         <div className="input-field-section">
             <div className="input-field-wrap">
-                <input type={type} placeholder={placeholder} onChange={onChange} disabled={disabled}></input>
+                <input type={type} placeholder={placeholder} className={`form-control  ${className}`} onChange={onChange} disabled={disabled}></input>
                 
             </div>
             {(error || internalError) && <div className="input-error">{error || internalError}</div>}

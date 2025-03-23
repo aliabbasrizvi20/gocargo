@@ -1,41 +1,28 @@
-.login-form{
-background-color: white;
-position:absolute;
-top: 15%;
-padding: 60px;
-border-radius: 5px;
-left: 30%;
+.login-form {
+    background-color: white;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+    padding: 45px;
 
 
 }
-.holder{
+
+.holder {
     background-image: url("../../assets/bent.jpg");
-   background-size: cover;
-   width: 100%;
-   height: 100vh;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    padding-top: 40px;
 }
-.btn{
-background-color: green;
-color: white;
-}
-.data-field{
-    /* border: 5px solid red; */
-    width: 500px;
-    text-align: center;
-    
-}
-.data-field input{
-   padding: 10px;
-    width: 80%;
-    margin: 15px; 
-    outline: none;  
-   
-}
-.data-field button{
-    width: 80%;
-    padding: 10px;
-}
-.sign{
+
+.sign {
     display: flex;
-        justify-content: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        width: 90%;
+    }
 }
