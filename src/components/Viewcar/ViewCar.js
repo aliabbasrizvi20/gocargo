@@ -25,7 +25,7 @@ function ViewCar() {
     //     Detail: "Tesla XuV750",
     //     Des: "Manual"
     // }
-    if(car && car.images){
+    if (car && car.images) {
         return (
             <Cardata
                 car={car}
@@ -38,7 +38,7 @@ function ViewCar() {
                 Host={car.host.name}
                 Detail={car.name}
                 Des={car.description} />
-    
+
         );
     }
     return <></>

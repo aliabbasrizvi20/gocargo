@@ -35,13 +35,6 @@ width: 100%;
     padding: 10px;
     margin: 10px;
 }
-button{
-    width: 200px;
-    /* outline: none; */
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
-}
 .check{
     margin: -14px 0px 0px 25px;
 }
