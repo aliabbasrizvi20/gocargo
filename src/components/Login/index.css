@@ -1,13 +1,18 @@
 .login-form {
     background-color: white;
     border-radius: 5px;
-    width: 50%;
+    width: 540px;
     margin: auto;
     padding: 45px;
+    position: absolute;
+    left: 29%;
+    top: 25%;
 
 
 }
-
+.data-field input{
+   margin-bottom: 10px;
+}
 .holder {
     background-image: url("../../assets/bent.jpg");
     background-size: cover;

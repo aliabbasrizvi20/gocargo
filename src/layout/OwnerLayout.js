@@ -1,14 +1,13 @@
 import { Outlet } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import OwnerAddedCarList from "../components/OwnerAddedCarList/OwnerAddedCarList";
-
-function OwnerLayout({ children }) {
+import ListingPageNavbar from "../components/LIstingPageNavbar/ListingPageNavbar";
+function OwnerLayout() {
     return (
         <>
             <Header />
+            <ListingPageNavbar/>
             <Outlet />
-            <OwnerAddedCarList />
             <Footer />
         </>
     )

@@ -35,7 +35,7 @@ function ViewCar() {
                 // Img2={car.images[1]}
                 // Img3={car.images[1]}
                 // Img4={car.images[1]}
-                Host={car.host.name}
+                Host={car.host?.name}
                 Detail={car.name}
                 Des={car.description} />
 

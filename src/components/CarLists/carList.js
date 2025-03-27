@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { PUBLIC_API } from "../../helpers/requests";
 import { getCoordinatesFromGoogle } from "../../helpers/methods";
+import  Button from "../Button";
+import BackButton from "../BackButton/BackButton";
 function CarList() {
     const [list, setList] = useState([]);
     const location = useLocation();
@@ -33,6 +35,7 @@ function CarList() {
             <h1 className="txt">Top Cars In Bangalore:</h1>
 
             <div className="item-holder">
+            
                 {list.map(item => {
                     return <CarDetails
                     
@@ -41,10 +44,12 @@ function CarList() {
                         Price={item.price.selling_price}
                         Description={item.description}
                         id={item._id}
-                       
+                        
+                        
                     />
                     
                 })}
+               
             </div>
             
         </div>

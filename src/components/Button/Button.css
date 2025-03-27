@@ -2,5 +2,7 @@ button {
     background-color: #117A41;
    color: white;
    border: none;
+   border-radius: 10px;
+   border: none;
    
 }

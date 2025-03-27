@@ -6,10 +6,16 @@
  background-position: center;
 height: 70vh;
 width:100%;
-padding: 50px;
+
 }
 .car-list{
     margin: 40px;
+}
+.btn-btn-search{
+    
+        display: flex;
+        justify-content: center;
+    
 }
 /* .item-holder{
     background-color: coral;
@@ -31,7 +37,7 @@ width: 100%;
 .txt{
     margin-bottom: 30px;
 }
-.form-car input{
+.input-box input{
     padding: 10px;
     margin: 10px;
 }
@@ -66,6 +72,21 @@ width: 100%;
 .check{
     color: white;
 }
-.form-car input{
+.input-box input{
     border: none;
+}
+.bottom-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.bottom-container input{
+    padding: 10px;
+    border: none;
+}
+@media screen and (max-width: 768px) {
+    .bottom-container {
+        width: 90%; /* Adjust width for smaller screens */
+        margin: 0 auto; /* Center the container */
+    }
 }
