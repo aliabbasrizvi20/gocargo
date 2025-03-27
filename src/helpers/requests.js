@@ -11,7 +11,7 @@ const INSTANCE = axios.create({
 
 const PUBLIC_INSTANCE = axios.create({
   baseURL: BASE_URL,
-  headers: { "Content-Type": "multipart/form-data" },
+  headers: { "Content-Type": "application/json" },
   withCredentials: false,
 });
 
@@ -39,8 +39,8 @@ export const API = {
   get: (path) => {
     return INSTANCE.get(path);
   },
-  post: (path, data) => {
-    return INSTANCE.post(path, data);
+  post: (path, data, ...rest) => {
+    return INSTANCE.post(path, data, ...rest);
   },
 };
 

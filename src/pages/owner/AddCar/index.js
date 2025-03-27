@@ -7,6 +7,7 @@ import { API } from "../../../helpers/requests";
 import { PATH } from "../../../helpers/constants";
 import { getCoordinatesFromGoogle } from "../../../helpers/methods";
 import BackButton from "../../../components/BackButton/BackButton";
+import { useNavigate } from "react-router";
 
 const ownerDetails = {
   name: null,
@@ -52,7 +53,7 @@ function AddCar() {
 
     try {
       const response = await API.post(PATH.SAVE_CAR, formData, {
-        headers: { contentType: "multipart" },
+        contentType: "multipart",
       });
       console.log(response.data);
       alert("Car added successfully!");

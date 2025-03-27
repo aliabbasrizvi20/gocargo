@@ -32,7 +32,7 @@ function CarList() {
     
      return (
         <div className="main-holder">
-            <h1 className="txt">Top Cars In Bangalore:</h1>
+            <h1 className="txt">Top Cars In India</h1>
 
             <div className="item-holder">
             

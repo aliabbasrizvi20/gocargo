@@ -8,6 +8,33 @@ height: 70vh;
 width:100%;
 
 }
+.input-box input{
+    width: 360px;
+    outline: none;
+}
+.trip-start{
+    margin-right: 20px;
+}
+.trip-ends{
+    margin-right: 20px;
+}
+.trip-start input{
+    width: 230px;
+    outline: none;
+}
+.trip-ends input{
+    width: 230px;
+    outline: none;
+}
+.search-btn{
+    width: 200px;
+    border-radius: 0px
+}
+.search-btn{
+   padding: 10px;
+   border: none;
+   border-radius: none;
+}
 .car-list{
     margin: 40px;
 }
