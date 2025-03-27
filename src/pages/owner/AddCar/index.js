@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./addCar.css"
 import InputField from "../../../components/InputField";
 import Button from "../../../components/Button";
-import { Navigate, useNavigate } from "react-router";
-import OwnerAddedCarList from "../../../components/OwnerAddedCarList/OwnerAddedCarList";
+import { useNavigate } from "react-router";
+import BackButton from "../../../components/BackButton/BackButton";
 
 const ownerDetails = {
   name: null,
@@ -17,6 +17,7 @@ const ownerDetails = {
   carDescription: null,
 }
 function AddCar() {
+  const navigate=useNavigate();
   const [name, setName] = useState("");
 
   const onCarModelChange = (e) => {
@@ -80,14 +81,19 @@ function AddCar() {
 
   function onClick() {
     console.log(details)
+    navigate('./your-listing')
   }
 
-
   return (
+    <>
+   
     <div className="main-body">
       <div class="main-container">
+      <BackButton/>
         {/* <header class="header"> */}
+       
         <h1 id="title" class="text-center">
+        
           List Your Car
         </h1>
         {/*<p id="description" class="text-center"></p> */}
@@ -268,6 +274,7 @@ function AddCar() {
           </form>
         </div>
       </div></div>
+      </>
   );
 }
 

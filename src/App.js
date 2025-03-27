@@ -11,6 +11,7 @@ import { session } from "./store/auth/authAction";
 import OwnerLayout from "./layout/OwnerLayout";
 import AddCar from "./pages/owner/AddCar";
 import OrderSuccess from "./pages/rent/OrderSuccess";
+import OwnerAddedCarList from "./components/OwnerAddedCarList/OwnerAddedCarList";
 
 
 export default function App() {
@@ -35,6 +36,8 @@ export default function App() {
         {/* Owner Routes */}
         <Route path="/owner" element={<OwnerLayout />}>
           <Route index element={<AddCar />} />
+          <Route path="your-listing" element={<OwnerAddedCarList />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

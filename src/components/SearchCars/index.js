@@ -44,28 +44,24 @@ export default function SearchCars() {
                 <div className="content">
                     <div className="heading">
                         <h1>Search for cars in  <span className="highlight-city">bangalore</span></h1></div>
-                    <div className="botton-container">
-                        <div className="form-car">
+                    <div className="bottom-container">
+                        <div className="input-box">
                             <input type="text " className="txts" placeholder="Location" onChange={onLocationChange}></input>
+                           </div>
                             <div className="trip-start">
                                 <input type="date" placeholder="" onChange={onStartDateChange}></input>
                             </div>
                             <div className="trip-ends">
                                 <input type="date" placeholder="" onChange={onLastDateChange}></input>
                             </div>
-                            <div className="searchcar-btn">
-                                <Button onClick={onSearchClick} className="searchtbtn">Search Cars</Button>
                             </div>
-                        </div><div className="check">
-                            <input type="checkbox"></input><span> Delivery & Pick-up, from anywhere</span>
-                        </div>
-                    </div></div>
+                            
+                    </div>
             </div>
             <div className="car-list">
-                <CarList />
-                <div className="btn-btn-search">
-                    <Button onClick={onClick}>Browse All Cars</Button>
-                </div>
+                <CarList 
+                />
+               
             </div> 
             <OfferSection/>
                 <Footer /> 

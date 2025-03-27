@@ -68,7 +68,7 @@ export default function Signup() {
 
                 </div>
                 <div className="data-field">
-                    
+                    <h1>Register</h1>
                     <InputField
                     
                         type="text"

@@ -19,3 +19,13 @@
 .car .image img{
     width: 100%;
 }
+.cars-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.edit-button{
+    background-color: #212529;
+}
+.del-button{
+    background-color: #930d0d;
+}
