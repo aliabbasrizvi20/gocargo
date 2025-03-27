@@ -1,87 +1,147 @@
-import React, { useState } from "react";
-import "./addCar.css"
+import React, { useEffect, useState } from "react";
+import "./addCar.css";
 import InputField from "../../../components/InputField";
 import Button from "../../../components/Button";
-import { Navigate, useNavigate } from "react-router";
-import OwnerAddedCarList from "../../../components/OwnerAddedCarList/OwnerAddedCarList";
+import UploadField from "../../../components/UploadField";
+import { API } from "../../../helpers/requests";
+import { PATH } from "../../../helpers/constants";
+import { getCoordinatesFromGoogle } from "../../../helpers/methods";
 
 const ownerDetails = {
   name: null,
   carModel: null,
   mobileNumber: null,
   email: null,
-  images: null,
-  carType: null,
-  carLocation: null,
-  askingPrice: null,
-  carDescription: null,
-}
+  type: null,
+  price: {
+    selling_price: null,
+    striked_price: null,
+  },
+  description: null,
+  area: {
+    address: null,
+    city: null,
+  },
+  location: {
+    type: "Point",
+    coordinates: [0, 0],
+  },
+};
 function AddCar() {
-  const [name, setName] = useState("");
+  const [images, setImages] = useState([]);
+  const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
+
+  const saveCar = async () => {
+    const formData = new FormData();
+
+    // Append images
+    for (let i = 0; i < images.length; i++) {
+      formData.append("image", images[i]); // "image" matches backend field
+    }
+
+    // Append car data
+    Object.keys(details).forEach((key) => {
+      const stringifiableKeys = ["area", "location"];
+      if (stringifiableKeys.includes(key)) {
+        formData.append(key, JSON.stringify(details[key]));
+        return;
+      }
+      formData.append(key, details[key]);
+    });
+
+    try {
+      const response = await API.post(PATH.SAVE_CAR, formData, {
+        headers: { contentType: "multipart" },
+      });
+      console.log(response.data);
+      alert("Car added successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to add car!");
+    }
+  };
+
+  // 🔥 UseEffect to wait for state update before making API call
+  useEffect(() => {
+    if (!isReadyToSubmit) return;
+    saveCar();
+  }, [isReadyToSubmit]);
 
   const onCarModelChange = (e) => {
-    // console.log("Hello")
     setDetails((prev) => ({
       ...prev,
-      carModel: e.target.value
-    }))
-  }
+      carModel: e.target.value,
+    }));
+  };
   const onNameChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      name: e.target.value
-    }))
-  }
+      name: e.target.value,
+    }));
+  };
   const onMobileNumberChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      mobileNumber: e.target.value
-    }))
-  }
+      mobileNumber: e.target.value,
+    }));
+  };
   const onEmailChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      email: e.target.value
-    }))
-  }
+      email: e.target.value,
+    }));
+  };
   const onImagesChange = (e) => {
-    setDetails((prev) => ({
-      ...prev,
-      images: e.target.value
-    }))
-  }
+    setImages(e.target.files);
+  };
   const onCarTypeChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      carType: e.target.value
-    }))
-  }
-  const onCarLocationChange = (e) => {
+      type: e.target.value,
+    }));
+  };
+  const onCarAddressChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      carLocation: e.target.value
-    }))
-  }
+      area: {
+        address: e.target.value,
+      },
+    }));
+  };
   const onCarAskingPriceChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      askingPrice: e.target.value
-    }))
-  }
+      "price.selling_price": e.target.value,
+    }));
+  };
   const onCarDescriptionChange = (e) => {
     setDetails((prev) => ({
       ...prev,
-      carDescription: e.target.value
-    }))
-  }
-
+      description: e.target.value,
+    }));
+  };
 
   const [details, setDetails] = useState(ownerDetails);
 
-  function onClick() {
-    console.log(details)
-  }
+  async function onSubmit(e) {
+    e.preventDefault();
+    console.log(details);
 
+    // Get coordinates
+    const coordinates = await getCoordinatesFromGoogle(details.area.address);
+
+    if (coordinates) {
+      setDetails((prev) => ({
+        ...prev,
+        location: {
+          type: "Point",
+          coordinates: [coordinates.latitude, coordinates.longitude],
+        },
+      }));
+    }
+
+    setIsReadyToSubmit(true);
+  }
 
   return (
     <div className="main-body">
@@ -149,14 +209,19 @@ function AddCar() {
               <div className="col-md-6">
                 <div className="form-group">
                   <label id="email-label" for="email">
-                    Email
+                    Fuel Type
                   </label>
                   <InputField
                     type="email"
                     name="text"
                     id="model"
-                    placeholder="Enter Email"
-                    onChange={onEmailChange}
+                    placeholder="Fuel Type"
+                    onChange={(e) => {
+                      setDetails((prev) => ({
+                        ...prev,
+                        fuel_type: e.target.value,
+                      }));
+                    }}
                     className="form-control"
                     required
                   />
@@ -169,7 +234,7 @@ function AddCar() {
                   <label id="number-label" for="number">
                     Upload Images <small>(Upto 10)</small>
                   </label>
-                  <InputField
+                  <UploadField
                     type="file"
                     name="upload car images"
                     id="file"
@@ -180,8 +245,7 @@ function AddCar() {
                     onChange={onImagesChange}
                     accept="image/*"
                     multiple
-                  // onChange={handleFileChange}
-
+                    // onChange={handleFileChange}
                   />
                 </div>
               </div>
@@ -189,7 +253,12 @@ function AddCar() {
               <div className="col-md-6">
                 <div className="form-group">
                   <label>car type</label>
-                  <select id="dropdown" name="role" class="form-control" required>
+                  <select
+                    id="dropdown"
+                    name="role"
+                    class="form-control"
+                    required
+                  >
                     <option disabled selected value>
                       Select
                     </option>
@@ -207,13 +276,14 @@ function AddCar() {
               <div className="col-md-6">
                 <div class="form-group">
                   <label id="email-label" for="email">
-                    Car Location
+                    Car Adress
                   </label>
                   <input
                     type="text"
                     name="text"
                     id="model"
-                    placeholder="Enter car location"
+                    placeholder="Enter Car Address"
+                    onChange={onCarAddressChange}
                     class="form-control"
                     required
                   />
@@ -259,7 +329,7 @@ function AddCar() {
                   type="submit"
                   id="submit"
                   class="btn btn-primary btn-block w-100"
-                  onClick={onClick}
+                  onClick={onSubmit}
                 >
                   Add To Listing
                 </Button>
@@ -267,7 +337,8 @@ function AddCar() {
             </div>
           </form>
         </div>
-      </div></div>
+      </div>
+    </div>
   );
 }
 

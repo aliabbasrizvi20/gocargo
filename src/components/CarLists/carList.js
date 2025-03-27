@@ -1,18 +1,28 @@
 import "./index.css"
 import CarDetails from './CarDetails'
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Navigate, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { PUBLIC_API } from "../../helpers/requests";
+import { getCoordinatesFromGoogle } from "../../helpers/methods";
 function CarList() {
     const [list, setList] = useState([]);
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+
+    const city = queryParams.get("location");
     useEffect(()=>{
-        PUBLIC_API.get("/cars", {withCredentials: false}).then((res)=>{
-            setList(res.data);
-           
-        })
+        async function fetchCoords() {
+            let coordinates = null
+            if(city){
+                coordinates = await getCoordinatesFromGoogle(city);
+            }
+            const url = city ? `/cars?lat=${coordinates.latitude}&long=${coordinates.longitude}` : "/cars";
+            PUBLIC_API.get(url, {withCredentials: false}).then((res)=>{
+                setList(res.data);
+            })
+        }
+        fetchCoords();
     },[]);
-    const navigate=useNavigate();
     // function carsList(){
     //     navigate("/car/67bac72d20708f404bda2ca0")
     // }

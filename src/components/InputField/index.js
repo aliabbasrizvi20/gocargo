@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./InputField.css"
-import LoginPopup from "../Popup";
-function InputField({ type, placeholder, disabled, onChange, error, pattern,className, onClick  }) {
+function InputField({ type, placeholder, disabled, onChange, error, pattern,className  }) {
     const [internalError, setInternalError] = useState("");
 // const  onInputChange = (e) => {
     

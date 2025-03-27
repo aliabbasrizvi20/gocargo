@@ -4,4 +4,5 @@ export const PATH = {
     LOGOUT: "/auth/logout",
     CREATE_ORDER: "/create-order",
     CARS: "/cars",
+    SAVE_CAR: "/cars/save",
 };

@@ -21,7 +21,7 @@ export default function SearchCars() {
         console.log(location);
         console.log(startDate);
         console.log(lastDate);
-        navigate("/list");
+        navigate(`/list?location=${location}`);
     }
     const onLocationChange = (e) => {
         setLocation(e.target.value);
@@ -34,7 +34,7 @@ export default function SearchCars() {
     }
 
     function onClick() {
-        navigate("/list");
+        navigate(`/list?location=${location}`);
     }
 
     return (
